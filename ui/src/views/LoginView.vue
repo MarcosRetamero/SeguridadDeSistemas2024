@@ -31,6 +31,9 @@
         required
       >
       </v-text-field>
+
+      <div class="g-recaptcha" ref="recaptcha" data-sitekey="6LeTh70pAAAAAN9F_WjtjBLKShfp_bsFhDHWkvOy" data-action="LOGIN"></div>
+
       
       <v-btn
         block
