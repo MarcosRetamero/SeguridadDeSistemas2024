@@ -8,3 +8,5 @@ const initFirebaseClient = () => {
 export {
     initFirebaseClient
 }
+
+//EJECUTAR npm install firebase SEGUIDO DE npm install PARA QUE NO HAYA PROBLEMAS
