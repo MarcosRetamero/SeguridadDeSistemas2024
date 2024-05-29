@@ -14,6 +14,7 @@
       >
       </v-img>
       <v-text-field
+        id="user-name"
         v-model="user.name"
         :rules="userRules.name"
         :counter="10"
@@ -23,6 +24,7 @@
       </v-text-field>
   
       <v-text-field
+        id="user-password"
         v-model="user.password"
         :rules="userRules.password"
         :counter="10"
@@ -64,7 +66,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { SubmitEventPromise } from 'vuetify/lib/framework.mjs';
-import { UserLoginRequest } from '@/services/public-api';
+import { LogInRequest } from '@/services/auth-api/login';
 import { useAuthStore } from '@/stores/auth-store';
 
 const auth = useAuthStore();
@@ -73,7 +75,7 @@ const showError = ref(false);
 const errorMessage = ref(false);
 const isValid = ref(false);
 
-const user = ref(new UserLoginRequest());
+const user = ref(new LogInRequest());
 
 const userRules = ref({
   name: [
@@ -88,11 +90,12 @@ const login = async (event: SubmitEventPromise) => {
   try {
     await event;
     if (!isValid.value) return;
-
-    await auth.login(user.value);
+    
+    const token = await auth.getRecaptchaToken('login');
+    await auth.login(user.value, token);
   } catch(error: any) {
-    showError.value = true;
     errorMessage.value = error?.response?.data ?? 'Unexpected Error. Contact your admin!';
+    showError.value = true;
   }
 };
 

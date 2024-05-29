@@ -10,8 +10,6 @@ export default (err: Error, req: Request, res: Response, next: NextFunction) => 
         return next();
     }
 
-    console.error(err);
-
     if (err instanceof ValidationError) {
         return res.status(400).send(err.message)
     }
