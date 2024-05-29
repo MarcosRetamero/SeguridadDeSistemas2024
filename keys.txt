@@ -1,0 +1,22 @@
+GLOBALES MARCOS
+
+var globales api 
+
+PORT=3000
+UI_URL=http://localhost:8080
+GOOGLE_APPLICATION_CREDENTIALS=D:\SegSist2024\SeguridadDeSistemas2024\api\src\api\auth\firebase-admin-credentials.json
+
+GOOGLE_RECAPTCHA_SCORE=0.8
+GOOGLE_RECAPTCHA_PRIVATE_KEY=6LeNc9cpAAAAAEMzOBXFSaxC3WigoewK33DRr5ol
+
+DB_NAME=SEGURIDAD
+DB_USER=marcos
+DB_PASSWORD=12345678
+DB_HOST=localhost
+DB_PORT=53133
+DB_DIALECT=mssql
+
+var globales UI
+
+VUE_APP_SEC_API=http://localhost:3000
+VUE_APP_RECAPTCHA_SITE_KEY=6LeNc9cpAAAAAOU9h4PjEqFvQlXdOaA11foOeyuK
