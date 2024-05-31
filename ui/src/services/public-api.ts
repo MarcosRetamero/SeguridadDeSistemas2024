@@ -1,6 +1,7 @@
 import { HttpHandler } from './http-handler'
 
 const verifyApiHealthCheck = () => HttpHandler.get(`/`);
+const getCryptographicSecret = () => HttpHandler.get(`/criptographic-secret`);
 
 const userLogin = (data: UserLoginRequest) => HttpHandler.put(`/login`, data);
 
@@ -16,6 +17,7 @@ class UserLoginRequest {
 
 export {
     verifyApiHealthCheck,
+    getCryptographicSecret,
     userLogin,
     UserLoginRequest
 }

@@ -1,0 +1,2 @@
+Abrir el Cypress Test Runner
+npx cypress open

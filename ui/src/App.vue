@@ -5,6 +5,15 @@
         <v-btn @click="auth.toggleTheme">
           Toggle Theme
         </v-btn>
+        <v-btn to="/">
+          Home
+        </v-btn>
+        <v-btn to="/user/create">
+          Create User
+        </v-btn>
+        <v-btn to="/cryptographic-consign">
+          Cryptographic Consign
+        </v-btn>
       </nav>
       <v-spacer></v-spacer>
 

@@ -1,9 +1,12 @@
 import { Router } from "express";
-import { HealthCheck, Login } from "@api/controller/public";
+import {
+    HealthCheck,
+    GetCriptographicSecret
+} from "@api/controller/public";
 
 const router = Router();
  
 router.get('/', HealthCheck);
-router.put('/login', Login);
+router.get('/criptographic-secret', GetCriptographicSecret);
 
 export default router;

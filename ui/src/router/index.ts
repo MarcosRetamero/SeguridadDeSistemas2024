@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
-import { tokenRestore } from '@/services/token-storage';
+import { useAuthStore } from '@/stores/auth-store';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -14,9 +14,14 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "Login" */ '@/views/LoginView.vue')
   },
   {
-    path: '/more',
-    name: 'OtherView',
-    component: () => import(/* webpackChunkName: "OtherView" */ '@/views/OtherView.vue')
+    path: '/user/create',
+    name: 'CreateUser',
+    component: () => import(/* webpackChunkName: "CreateUserView" */ '@/views/CreateUserView.vue')
+  },
+  {
+    path: '/cryptographic-consign',
+    name: 'CryptographicConsign',
+    component: () => import(/* webpackChunkName: "CryptographicConsign" */ '@/views/CryptographicView.vue')
   },
 ]
 
@@ -25,10 +30,12 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach((to, from, next) => {
-  const token = tokenRestore();
-  if (to.name !== 'Login' && !token) next({ name: 'Login' });
-  else next();
+router.beforeEach(async (to, from, next) => {
+  if (to.name == 'Login') return next();
+
+  const auth = useAuthStore();
+  await auth.checkLogin();
+  next();
 })
 
 export default router
